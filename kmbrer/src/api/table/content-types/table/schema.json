@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tables",
+  "info": {
+    "singularName": "table",
+    "pluralName": "tables",
+    "displayName": "Table",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "number": {
+      "type": "string"
+    },
+    "restaurant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::restaurant.restaurant",
+      "inversedBy": "tables"
+    },
+    "isOpen": {
+      "type": "boolean",
+      "default": true
+    },
+    "code": {
+      "type": "string"
+    },
+    "canOpenOrder": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

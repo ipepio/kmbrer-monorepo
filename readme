@@ -1,0 +1,109 @@
+# **Guía de Ejecución de Proyectos Kmbrer**
+
+Este documento explica cómo levantar los 3 proyectos (**Backend Kmbrer**, **Kmbrer Card** y **Kmbrer Kitchen**) de forma independiente, indicando los comandos necesarios para cada repositorio.
+
+---
+
+## **1. Backend Kmbrer (Strapi)**
+
+### **Ubicación**: `kmbrer/`
+
+### **Comandos a ejecutar**:
+
+1. **Levantar los servicios (contenedores de Strapi, PostgreSQL y MinIO)**:
+   ´´´
+   make up
+   ´´´
+
+2. **Inicializar la base de datos (opcional)**:
+   Si es necesario inicializar la base de datos con un script SQL:
+   ´´´
+   make restore_bbdd
+   ´´´
+
+3. **Iniciar Strapi en modo desarrollo**:
+   ´´´
+   make run
+   ´´´
+
+4. **Acceder al Admin de Strapi**:
+   - URL: **`http://localhost:1337`**
+   - Usuario: `admin@kmbrer.com`  
+   - Contraseña: `Adminkmbrercom2`
+
+---
+
+## **2. Kmbrer Card (Aplicación React + Vite)**
+
+### **Ubicación**: `kmbrer-card/`
+
+### **Comandos a ejecutar**:
+
+1. **Instalar dependencias**:
+   ´´´
+   npm install
+   ´´´
+
+2. **Compilar la aplicación**:
+   ´´´
+   npm run build
+   ´´´
+
+3. **Previsualizar la aplicación compilada**:
+   ´´´
+   npm run preview
+   ´´´
+
+4. **Acceder a la app**:
+   - URL: **`http://localhost:3173`**
+
+---
+
+## **3. Kmbrer Kitchen (Aplicación React + Vite)**
+
+### **Ubicación**: `kmbrer-kitchen/`
+
+### **Comandos a ejecutar**:
+
+1. **Instalar dependencias**:
+   ´´´
+   npm install
+   ´´´
+
+2. **Compilar la aplicación**:
+   ´´´
+   npm run build
+   ´´´
+
+3. **Previsualizar la aplicación compilada**:
+   ´´´
+   npm run preview
+   ´´´
+
+4. **Acceder a la app**:
+   - URL: **`http://localhost:5173`**
+
+5. **Credenciales del usuario de Kitchen**:
+   - Usuario: `kitchen@kmbrer.com`  
+   - Contraseña: `kitchen@kmbrer.com`
+
+---
+
+## **Resumen de Puertos**
+
+| Proyecto          | URL                         | Usuario                 | Contraseña           |
+|-------------------|-----------------------------|-------------------------|----------------------|
+| **Backend Kmbrer**| `http://localhost:1337`     | `admin@kmbrer.com`      | `Adminkmbrercom2`    |
+| **Kmbrer Card**   | `http://localhost:3173`     | No requiere login       | -                    |
+| **Kmbrer Kitchen**| `http://localhost:5173`     | `kitchen@kmbrer.com`    | `kitchen@kmbrer.com` |
+
+---
+
+## **Notas Adicionales**
+
+- Asegúrate de tener **Node.js** (versión 16 o superior) y **npm** instalados.
+- Para el **Backend Kmbrer**, los servicios adicionales (PostgreSQL y MinIO) se levantan automáticamente con el comando `make up`.
+
+---
+
+Con estos pasos, los 3 proyectos estarán disponibles y funcionando en sus correspondientes puertos. 🚀

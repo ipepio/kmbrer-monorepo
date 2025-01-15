@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "restaurants",
+  "info": {
+    "singularName": "restaurant",
+    "pluralName": "restaurants",
+    "displayName": "Restaurant",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "custom-types.address"
+    },
+    "horary": {
+      "displayName": "Opening hours",
+      "type": "component",
+      "repeatable": true,
+      "component": "custom-types.opening-hours"
+    },
+    "company": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company.company",
+      "inversedBy": "restaurants"
+    },
+    "tables": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::table.table",
+      "mappedBy": "restaurant"
+    },
+    "IAM": {
+      "type": "customField",
+      "options": {
+        "uuid-format": "^[A-Z0-9]{10}$"
+      },
+      "customField": "plugin::strapi-advanced-uuid.uuid"
+    },
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

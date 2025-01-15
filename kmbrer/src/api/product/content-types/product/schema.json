@@ -1,0 +1,85 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "restaurants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::restaurant.restaurant"
+    },
+    "allergens": {
+      "type": "customField",
+      "default": "[]",
+      "options": [
+        "Milk",
+        "Eggs",
+        "Peanuts",
+        "Tree Nuts",
+        "Soy",
+        "Wheat",
+        "Fish",
+        "Shellfish",
+        "Sesame",
+        "Mustard",
+        "Celery",
+        "Lupin",
+        "Mollusks",
+        "Sulfites",
+        "Gluten"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Ensaladas",
+        "Mariscos",
+        "Para picar",
+        "Jamones y embutidos",
+        "Rebozados",
+        "Revueltos",
+        "Cazuelicas",
+        "Para los peques",
+        "Postres",
+        "Sugerencias de la casa"
+      ]
+    },
+    "basePrice": {
+      "type": "decimal"
+    },
+    "isAvailabile": {
+      "type": "boolean",
+      "default": true
+    },
+    "complement": {
+      "displayName": "Complement",
+      "type": "component",
+      "repeatable": true,
+      "component": "product.complement"
+    }
+  }
+}

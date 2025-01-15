@@ -1,0 +1,62 @@
+services:
+  main:
+    build:
+      context: .
+      target: development
+      args:
+        USER_ID: ${USER_ID:-1000}
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - ${HTTP_PORT:-1337}:1337
+      - ${NODE_DEBUG_PORT:-9229}:9229
+    tty: true
+    depends_on:
+      - postgres
+      - minio
+
+  postgres:
+    image: postgres:16.3-alpine3.20
+    environment:
+      POSTGRES_PASSWORD: postgres
+
+    volumes:
+      - postgres_storage:/var/lib/postgresql/data
+      - ./database/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - ${POSTGRES_PORT:-5432}:5432
+
+  minio:
+    image: quay.io/minio/minio:RELEASE.2024-06-29T01-20-47Z
+    entrypoint: >
+      minio server /data --console-address :9001
+    environment:
+       MINIO_ACCESS_KEY: default
+       MINIO_SECRET_KEY: default-secret
+    volumes:
+      - minio_storage:/data
+    ports:
+      - ${MINIO_HTTP_PORT:-9000}:9000
+      - ${MINIO_CONSOLE_PORT:-9001}:9001
+
+  mc:
+    image: quay.io/minio/mc:RELEASE.2024-07-03T20-17-25Z
+    entrypoint: sh
+    command: >
+      -c "
+      mc alias set default http://minio:9000 default default-secret;
+
+      mc mb default/default &&
+      mc anonymous set download default/default &&
+      mc mirror /data/ default/default;
+
+      exit 0;
+      "
+    volumes:
+      - ./public/uploads:/data
+    depends_on:
+      - minio
+
+volumes:
+  postgres_storage:
+  minio_storage:

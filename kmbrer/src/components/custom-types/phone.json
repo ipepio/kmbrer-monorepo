@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_custom_types_phones",
+  "info": {
+    "displayName": "phone"
+  },
+  "options": {},
+  "attributes": {
+    "prefix": {
+      "type": "string",
+      "default": "+34"
+    },
+    "number": {
+      "type": "string"
+    }
+  }
+}

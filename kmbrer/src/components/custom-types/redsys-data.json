@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_custom_types_redsys_data",
+  "info": {
+    "displayName": "redsysData",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "merchantCode": {
+      "type": "string"
+    },
+    "merchantTerminal": {
+      "type": "string"
+    },
+    "merchantName": {
+      "type": "string"
+    },
+    "secretKey": {
+      "type": "password"
+    }
+  }
+}

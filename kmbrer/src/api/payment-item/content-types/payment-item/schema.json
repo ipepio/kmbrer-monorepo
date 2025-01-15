@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payment_items",
+  "info": {
+    "singularName": "payment-item",
+    "pluralName": "payment-items",
+    "displayName": "Payment-item",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "orderItem": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order-item.order-item",
+      "inversedBy": "payment"
+    },
+    "payment": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::payment.payment",
+      "inversedBy": "paymentItems"
+    },
+    "amount": {
+      "type": "decimal"
+    }
+  }
+}

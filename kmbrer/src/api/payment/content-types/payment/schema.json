@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "singularName": "payment",
+    "pluralName": "payments",
+    "displayName": "Payment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "payments"
+    },
+    "paymentItems": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment-item.payment-item",
+      "mappedBy": "payment"
+    },
+    "paidBy": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::seat.seat"
+    },
+    "paidFor": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::seat.seat"
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "cash",
+        "redsys"
+      ]
+    },
+    "orderId": {
+      "type": "string"
+    },
+    "transactionComplete": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

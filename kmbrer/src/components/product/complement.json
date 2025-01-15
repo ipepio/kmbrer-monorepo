@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_product_complements",
+  "info": {
+    "displayName": "Complement"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_items",
+  "info": {
+    "singularName": "order-item",
+    "pluralName": "order-items",
+    "displayName": "Order - Order Item",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "seat": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::seat.seat",
+      "inversedBy": "order_items"
+    },
+    "sharedWith": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::seat.seat"
+    },
+    "order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "order_items"
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "confirmed",
+        "delivered",
+        "cancelled"
+      ]
+    },
+    "complement": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.complement"
+    },
+    "comments": {
+      "type": "string"
+    },
+    "payment": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment-item.payment-item",
+      "mappedBy": "orderItem"
+    },
+    "isPaid": {
+      "type": "enumeration",
+      "enum": [
+        "false",
+        "partial",
+        "true"
+      ],
+      "default": "false"
+    }
+  }
+}

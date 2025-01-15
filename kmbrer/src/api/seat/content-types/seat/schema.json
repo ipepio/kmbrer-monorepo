@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "seats",
+  "info": {
+    "singularName": "seat",
+    "pluralName": "seats",
+    "displayName": "seat"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "order_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order-item.order-item",
+      "mappedBy": "seat"
+    },
+    "order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "seats"
+    }
+  }
+}

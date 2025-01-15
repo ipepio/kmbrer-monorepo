@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "companies",
+  "info": {
+    "singularName": "company",
+    "pluralName": "companies",
+    "displayName": "Company",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "address": {
+      "displayName": "address",
+      "type": "component",
+      "repeatable": false,
+      "component": "custom-types.address"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "displayName": "phone",
+      "type": "component",
+      "repeatable": false,
+      "component": "custom-types.phone"
+    },
+    "restaurants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::restaurant.restaurant",
+      "mappedBy": "company"
+    },
+    "redsys": {
+      "displayName": "redsysData",
+      "type": "component",
+      "repeatable": false,
+      "component": "custom-types.redsys-data"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_custom_types_opening_hours",
+  "info": {
+    "displayName": "Opening hours",
+    "icon": "chartCircle"
+  },
+  "options": {},
+  "attributes": {
+    "dayOfWeek": {
+      "type": "customField",
+      "default": "[]",
+      "options": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "openingTime": {
+      "type": "time"
+    },
+    "closingTime": {
+      "type": "time"
+    }
+  }
+}
